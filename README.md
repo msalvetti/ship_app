@@ -24,6 +24,16 @@ git switch m05-starter
 
 The app uses three separate flavors: `dev`, `stg`, and `prod`. These are already configured if you grab the latest code.
 
+# Run on development
+flutter run --flavor dev -t lib/main_dev.dart
+
+# Run on staging
+flutter run --flavor stg -t lib/main_stg.dart
+# Wait for the app to start, then CTRL+C to stop
+
+# Run on prod
+flutter run --flavor prod -t lib/main_prod.dart
+
 ### Configuring Firebase with FlutterFire CLI
 
 The project uses Firebase Analytics and Remote Config. As such, it needs to be configured with the FlutterFire CLI as shown in [this lesson](https://pro.codewithandrea.com/flutter-in-production/03-flavors/16-firebase-setup-flutterfire-cli).
