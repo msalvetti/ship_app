@@ -1,5 +1,6 @@
 name: flutter_ship_app
-description: "Flutter App Release Checklist (companion app for the Flutter in Production course)"
+description: "Flutter App Release Checklist (companion app for the Flutter in
+  Production course)"
 publish_to: 'none'
 version: 0.3.3+16
 
@@ -7,41 +8,39 @@ environment:
   sdk: '>=3.5.0 <4.0.0'
 
 dependencies:
-  flutter:
-    sdk: flutter
-  # Drift and friends
+  auto_size_text: 3.0.0
+  dio: 5.7.0
   drift: 2.20.3
   drift_dev: 2.20.3
-  path_provider: 2.1.4
-  path: 1.9.0
-  sqlite3_flutter_libs: 0.5.24
-  sqlite3: 2.4.6
-  # Other packages
+  firebase_core: ^3.6.0
   flex_color_scheme: 7.3.1
+  flutter:
+    sdk: flutter
   flutter_riverpod: 2.5.1
+  package_info_plus: 8.0.2
+  path: 1.9.0
+  path_provider: 2.1.4
   riverpod_annotation: 2.3.5
   shared_preferences: 2.3.2
-  auto_size_text: 3.0.0
-  package_info_plus: 8.0.2
-  dio: 5.7.0
+  sqlite3: 2.4.6
+  sqlite3_flutter_libs: 0.5.24
 
 dev_dependencies:
+  build_runner: 2.4.13
+  custom_lint: 0.6.7
+  flutter_flavorizr: 2.2.3
+  flutter_launcher_icons: 0.14.1
+  flutter_lints: 5.0.0
+  flutter_native_splash: 2.4.1
   flutter_test:
     sdk: flutter
-  flutter_lints: 5.0.0
-  build_runner: 2.4.13
   riverpod_generator: 2.4.3
-  custom_lint: 0.6.7
   riverpod_lint: 2.3.13
-  flutter_launcher_icons: 0.14.1
-  flutter_native_splash: 2.4.1
-  flutter_flavorizr: 2.2.3
 
 flutter:
   uses-material-design: true
   assets:
     - assets/common/
-
 
 # Flutter Launcher Icons configuration
 flutter_launcher_icons:
@@ -74,7 +73,7 @@ flavorizr:
   app:
     android:
       flavorDimensions: "flavor-type"
-    
+
   flavors:
     dev:
       app:
@@ -88,13 +87,12 @@ flavorizr:
       ios:
         bundleId: "com.codewithandrea.flutterShipApp.dev"
         icon: "assets/dev/app-icon.png"
-    
 
     stg:
       app:
         name: "Flutter Ship Stg"
       android:
-        applicationId: "com.codewithandrea.flutter_ship_app.stg"  
+        applicationId: "com.codewithandrea.flutter_ship_app.stg"
         icon: "assets/stg/app-icon.png"
         adaptiveIcon:
           foreground: "assets/stg/app-icon-foreground.png"
@@ -107,7 +105,7 @@ flavorizr:
       app:
         name: "Flutter Ship"
       android:
-        applicationId: "com.codewithandrea.flutter_ship_app"  
+        applicationId: "com.codewithandrea.flutter_ship_app"
         icon: "assets/prod/app-icon.png"
         adaptiveIcon:
           foreground: "assets/prod/app-icon-foreground.png"
