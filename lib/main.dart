@@ -12,6 +12,9 @@ import 'package:flutter_ship_app/src/utils/shared_preferences_provider.dart';
 import 'package:flutter_ship_app/src/presentation/apps_list_screen.dart';
 import 'package:flutter_ship_app/src/utils/app_theme_data.dart';
 import 'package:flutter_ship_app/src/utils/app_theme_mode.dart';
+import 'package:sentry_flutter/sentry_flutter.dart';
+import 'package:flutter_ship_app/env/env.dart';
+import 'package:flutter_ship_app/env/flavor.dart';
 
 Future<void> runMainApp() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -20,12 +23,25 @@ Future<void> runMainApp() async {
   // * depends on it in order to load the themeMode
   await container.read(sharedPreferencesProvider.future);
   // run the app
-  runApp(UncontrolledProviderScope(
-    container: container,
-    child: AppStartupWidget(
-      onLoaded: (context) => const MainApp(),
-    ),
-  ));
+  await SentryFlutter.init(
+    (options) {
+      options.dsn = Env.sentryDsn;
+      options.environment = getFlavor().name;
+       // We recommend adjusting this value in production.
+      options.tracesSampleRate = 1.0;
+      // The sampling rate for profiling is relative to tracesSampleRate
+      // Setting to 1.0 will profile 100% of sampled transactions:
+      options.profilesSampleRate = 1.0;  
+    },
+    appRunner: () => runApp(UncontrolledProviderScope(
+      container: container,
+      child: AppStartupWidget(
+        onLoaded: (context) => const MainApp(),
+      ),
+    )),
+  );
+
+
 }
 
 class MainApp extends ConsumerWidget {
